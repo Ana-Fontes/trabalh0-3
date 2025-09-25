@@ -1,0 +1,63 @@
+ackage fatura;
+
+	public class Fatura {
+	    private String numeroItem;
+	    private String descricaoItem;
+	    private int quantidade;
+	    private double precoUnitario;
+
+	    // Construtor
+	    public Fatura(String numeroItem, String descricaoItem, int quantidade, double precoUnitario) {
+	        this.numeroItem = numeroItem;
+	        this.descricaoItem = descricaoItem;
+	        this.quantidade = Math.max(quantidade, 0); // Se quantidade <=0, seta 0
+	        this.precoUnitario = precoUnitario > 0 ? precoUnitario : 0.0; // Se preço <=0, seta 0.0
+	    }
+
+	    // Getters e Setters
+	    public String getNumeroItem() {
+	        return numeroItem;
+	    }
+
+	    public void setNumeroItem(String numeroItem) {
+	        this.numeroItem = numeroItem;
+	    }
+
+	    public String getDescricaoItem() {
+	        return descricaoItem;
+	    }
+
+	    public void setDescricaoItem(String descricaoItem) {
+	        this.descricaoItem = descricaoItem;
+	    }
+
+	    public int getQuantidade() {
+	        return quantidade;
+	    }
+
+	    public void setQuantidade(int quantidade) {
+	        this.quantidade = Math.max(quantidade, 0);
+	    }
+
+	    public double getPrecoUnitario() {
+	        return precoUnitario;
+	    }
+
+	    public void setPrecoUnitario(double precoUnitario) {
+	        this.precoUnitario = precoUnitario > 0 ? precoUnitario : 0.0;
+	    }
+
+	    // Método que calcula o valor total da fatura
+	    public double getValorFatura() {
+	        return quantidade * precoUnitario;
+	    }
+
+	    // Método que aplica desconto percentual no preço unitário
+	    public void aplicarDesconto(double percentual) {
+	        if (percentual > 0 && percentual <= 100) {
+	            precoUnitario -= precoUnitario * percentual / 100;
+	        }
+	    }
+	}
+
+
