@@ -1,0 +1,63 @@
+package produto;
+
+public class Produto {
+    private String nome;
+    private double preco;
+    private int quantidade;
+    private boolean comprado; // Indica se o produto foi comprado
+
+    // Construtor
+    public Produto(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco > 0 ? preco : 0.0;
+        this.quantidade = quantidade > 0 ? quantidade : 0;
+        this.comprado = false;
+    }
+
+    // Getters e Setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco > 0 ? preco : 0.0;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade > 0 ? quantidade : 0;
+    }
+
+    public boolean isComprado() {
+        return comprado;
+    }
+
+    // Método comprarProduto que calcula preço total com desconto
+    public double comprarProduto() {
+        this.comprado = true;
+        double valorTotal = preco * quantidade;
+        double desconto = 0.0;
+
+        // Aplicando desconto de acordo com o valor total
+        if (valorTotal > 100 && valorTotal <= 200) {
+            desconto = 0.10; // 10%
+        } else if (valorTotal > 200 && valorTotal <= 500) {
+            desconto = 0.20; // 20%
+        } else if (valorTotal > 500) {
+            desconto = 0.25; // 25%
+        }
+
+        return valorTotal * (1 - desconto); // valor com desconto
+    }
+}
